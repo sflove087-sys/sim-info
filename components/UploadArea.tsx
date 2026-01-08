@@ -18,9 +18,9 @@ const UploadArea: React.FC<UploadAreaProps> = ({ id, title, onFileSelect, maxSiz
   const fileInputRef = React.useRef<HTMLInputElement>(null);
 
   const baseClasses = "border-2 border-dashed rounded-2xl p-4 text-center cursor-pointer transition-all duration-300 h-full flex flex-col justify-center items-center relative overflow-hidden";
-  const themeClasses = isPhoto ? "border-green-300 bg-green-50/50" : "border-teal-200 bg-teal-50/50";
-  const hoverClasses = isPhoto ? "hover:border-green-500 hover:bg-green-100/50" : "hover:border-emerald-900 hover:bg-teal-100/50";
-  const draggingClasses = isPhoto ? "border-green-600 bg-green-200/50 ring-4 ring-green-100" : "border-emerald-900 bg-teal-200/50 ring-4 ring-teal-100";
+  const themeClasses = isPhoto ? "border-green-300 bg-green-50 bg-opacity-50" : "border-teal-200 bg-teal-50 bg-opacity-50";
+  const hoverClasses = isPhoto ? "hover:border-green-500 hover:bg-green-100 hover:bg-opacity-50" : "hover:border-emerald-900 hover:bg-teal-100 hover:bg-opacity-50";
+  const draggingClasses = isPhoto ? "border-green-600 bg-green-200 bg-opacity-50 ring-4 ring-green-100" : "border-emerald-900 bg-teal-200 bg-opacity-50 ring-4 ring-teal-100";
   const errorClasses = "border-red-500 bg-red-50";
 
   const handleFileChange = (selectedFile: File | null) => {
@@ -60,7 +60,7 @@ const UploadArea: React.FC<UploadAreaProps> = ({ id, title, onFileSelect, maxSiz
       ) : (
         <div className="z-10 flex flex-col items-center justify-center">
           {showCardOutline && (
-            <div className="w-24 h-16 bg-white/50 border-2 border-dashed border-teal-400 rounded-lg flex items-center justify-center mb-2">
+            <div className="w-24 h-16 bg-white bg-opacity-50 border-2 border-dashed border-teal-400 rounded-lg flex items-center justify-center mb-2">
                 <i className="fas fa-image text-teal-400 text-2xl"></i>
             </div>
           )}

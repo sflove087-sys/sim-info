@@ -11,6 +11,7 @@ import UploadArea from './components/UploadArea';
 import PreviewBox from './components/PreviewBox';
 import SimInfoCard from './components/SimInfoCard';
 import ImageCropper from './components/ImageCropper';
+import Sidebar from './components/Sidebar';
 
 const App: React.FC = () => {
   const [formData, setFormData] = useState<FormData>({
@@ -150,91 +151,97 @@ const App: React.FC = () => {
 
   return (
     <div className="font-sans min-h-screen p-4 sm:p-6 md:p-8">
-      <div className="max-w-5xl mx-auto">
-        <header className="text-center mb-10 p-6 bg-[var(--color-primary)] text-white rounded-2xl shadow-xl relative overflow-hidden">
-          <div className="absolute -top-4 -left-8 text-white/10 text-8xl transform rotate-12">
-            <i className="fas fa-sim-card"></i>
-          </div>
-          <div className="absolute -bottom-8 -right-4 text-white/10 text-9xl transform -rotate-12">
-             <i className="fas fa-id-card"></i>
-          </div>
-          <div className="relative z-10">
-            <h1 className="text-4xl md:text-5xl font-bold font-display tracking-wide">ডিজিটাল সিম নিবন্ধন</h1>
-            <p className="text-base md:text-lg opacity-90 mt-2 font-sans">আপনার জাতীয় পরিচয়পত্র ব্যবহার করে সহজেই নিবন্ধন সম্পন্ন করুন</p>
-          </div>
-        </header>
+      <div className="max-w-7xl mx-auto lg:grid lg:grid-cols-12 lg:gap-12">
+        <aside className="hidden lg:block lg:col-span-4">
+          <Sidebar />
+        </aside>
 
-        {imageToCrop && croppingTarget && (
-          <ImageCropper src={imageToCrop} onCropComplete={handleCropComplete} onCancel={handleCropCancel} aspect={croppingTarget === 'customerPhoto' ? 3 / 4 : 85.6 / 54} cropShape={croppingTarget === 'customerPhoto' ? 'round' : 'rect'} title={croppingTarget === 'customerPhoto' ? 'ছবি ক্রপ করুন' : 'NID কার্ড ক্রপ করুন'} />
-        )}
-
-        {isSubmitted ? (
-          <SimInfoCard formData={formData} customerPhoto={customerPhoto} applicationId={applicationId} onReset={handleReset} />
-        ) : (
-          <>
-            <StatusIndicator currentStep={currentStep} />
-            <div className="bg-yellow-50 p-5 rounded-2xl mb-8 border-l-4 border-[var(--color-secondary)] text-yellow-900 shadow-md">
-              <p className="flex items-start gap-4">
-                <i className="fas fa-info-circle text-[var(--color-secondary)] mt-1 text-xl"></i>
-                <span className="font-sans">NID কার্ডের ছবি আপলোড করে "অটোফিল করুন" বাটনে চাপ দিন, অথবা ম্যানুয়ালি ফরমটি পূরণ করুন।</span>
-              </p>
+        <main className="lg:col-span-8">
+          <header className="text-center mb-10 p-6 bg-[var(--color-primary)] text-white rounded-2xl shadow-xl relative overflow-hidden">
+            <div className="absolute -top-4 -left-8 text-white/10 text-8xl transform rotate-12">
+              <i className="fas fa-sim-card"></i>
             </div>
+            <div className="absolute -bottom-8 -right-4 text-white/10 text-9xl transform -rotate-12">
+               <i className="fas fa-id-card"></i>
+            </div>
+            <div className="relative z-10">
+              <h1 className="text-4xl md:text-5xl font-bold font-display tracking-wide">ডিজিটাল সিম নিবন্ধন</h1>
+              <p className="text-base md:text-lg opacity-90 mt-2 font-sans">আপনার জাতীয় পরিচয়পত্র ব্যবহার করে সহজেই নিবন্ধন সম্পন্ন করুন</p>
+            </div>
+          </header>
 
-            <div className="space-y-8">
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                <FormSection title="ব্যক্তিগত তথ্য" iconClass="fa-user-circle">
-                  <FormInput id="customerName" label="পূর্ণ নাম" value={formData.customerName} onChange={handleInputChange} required isError={validationErrors.customerName} />
-                  <FormInput id="fatherName" label="পিতার নাম" value={formData.fatherName} onChange={handleInputChange} required isError={validationErrors.fatherName} />
-                  <FormInput id="motherName" label="মাতার নাম" value={formData.motherName} onChange={handleInputChange} required isError={validationErrors.motherName} />
-                  <FormInput id="dateOfBirth" label="জন্ম তারিখ" value={formData.dateOfBirth} onChange={handleInputChange} type="date" required isError={validationErrors.dateOfBirth} />
-                  <FormInput id="nidNumber" label="জাতীয় পরিচয়পত্র নম্বর" value={formData.nidNumber} onChange={handleInputChange} required isError={validationErrors.nidNumber} />
-                </FormSection>
-                <FormSection title="ঠিকানা ও যোগাযোগ" iconClass="fa-map-location-dot">
-                  <FormInput id="village" label="গ্রাম/মহল্লা" value={formData.village} onChange={handleInputChange} required isError={validationErrors.village} />
-                  <FormInput id="postOffice" label="ডাকঘর" value={formData.postOffice} onChange={handleInputChange} required isError={validationErrors.postOffice} />
-                  <FormInput id="upazila" label="উপজেলা/থানা" value={formData.upazila} onChange={handleInputChange} required isError={validationErrors.upazila} />
-                  <SelectInput id="district" label="জেলা" value={formData.district} onChange={handleInputChange} options={DISTRICTS} required isError={validationErrors.district} />
-                  <FormInput id="mobileNumber" label="মোবাইল নম্বর" value={formData.mobileNumber} onChange={handleInputChange} type="tel" placeholder="01XXXXXXXXX" required isError={validationErrors.mobileNumber} />
+          {imageToCrop && croppingTarget && (
+            <ImageCropper src={imageToCrop} onCropComplete={handleCropComplete} onCancel={handleCropCancel} aspect={croppingTarget === 'customerPhoto' ? 3 / 4 : 85.6 / 54} cropShape={croppingTarget === 'customerPhoto' ? 'round' : 'rect'} title={croppingTarget === 'customerPhoto' ? 'ছবি ক্রপ করুন' : 'NID কার্ড ক্রপ করুন'} />
+          )}
+
+          {isSubmitted ? (
+            <SimInfoCard formData={formData} customerPhoto={customerPhoto} applicationId={applicationId} onReset={handleReset} />
+          ) : (
+            <>
+              <StatusIndicator currentStep={currentStep} />
+              <div className="bg-yellow-50 p-5 rounded-2xl mb-8 border-l-4 border-[var(--color-secondary)] text-yellow-900 shadow-md">
+                <p className="flex items-start gap-4">
+                  <i className="fas fa-info-circle text-[var(--color-secondary)] mt-1 text-xl"></i>
+                  <span className="font-sans">NID কার্ডের ছবি আপলোড করে "অটোফিল করুন" বাটনে চাপ দিন, অথবা ম্যানুয়ালি ফরমটি পূরণ করুন।</span>
+                </p>
+              </div>
+
+              <div className="space-y-8">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                  <FormSection title="ব্যক্তিগত তথ্য" iconClass="fa-user-circle">
+                    <FormInput id="customerName" label="পূর্ণ নাম" value={formData.customerName} onChange={handleInputChange} required isError={validationErrors.customerName} />
+                    <FormInput id="fatherName" label="পিতার নাম" value={formData.fatherName} onChange={handleInputChange} required isError={validationErrors.fatherName} />
+                    <FormInput id="motherName" label="মাতার নাম" value={formData.motherName} onChange={handleInputChange} required isError={validationErrors.motherName} />
+                    <FormInput id="dateOfBirth" label="জন্ম তারিখ" value={formData.dateOfBirth} onChange={handleInputChange} type="date" required isError={validationErrors.dateOfBirth} />
+                    <FormInput id="nidNumber" label="জাতীয় পরিচয়পত্র নম্বর" value={formData.nidNumber} onChange={handleInputChange} required isError={validationErrors.nidNumber} />
+                  </FormSection>
+                  <FormSection title="ঠিকানা ও যোগাযোগ" iconClass="fa-map-location-dot">
+                    <FormInput id="village" label="গ্রাম/মহল্লা" value={formData.village} onChange={handleInputChange} required isError={validationErrors.village} />
+                    <FormInput id="postOffice" label="ডাকঘর" value={formData.postOffice} onChange={handleInputChange} required isError={validationErrors.postOffice} />
+                    <FormInput id="upazila" label="উপজেলা/থানা" value={formData.upazila} onChange={handleInputChange} required isError={validationErrors.upazila} />
+                    <SelectInput id="district" label="জেলা" value={formData.district} onChange={handleInputChange} options={DISTRICTS} required isError={validationErrors.district} />
+                    <FormInput id="mobileNumber" label="মোবাইল নম্বর" value={formData.mobileNumber} onChange={handleInputChange} type="tel" placeholder="01XXXXXXXXX" required isError={validationErrors.mobileNumber} />
+                  </FormSection>
+                </div>
+
+                <FormSection title="ডকুমেন্ট ও ছবি আপলোড" iconClass="fa-cloud-upload">
+                  <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                    <UploadArea id="frontNid" title="NID (ফ্রন্ট)" onFileSelect={(file) => handleFileSelect(file, 'frontNid')} isError={validationErrors.frontNid} showCardOutline />
+                    <UploadArea id="backNid" title="NID (ব্যাক)" onFileSelect={(file) => handleFileSelect(file, 'backNid')} isError={validationErrors.backNid} showCardOutline />
+                    <UploadArea id="customerPhoto" title="গ্রাহকের ছবি" onFileSelect={(file) => handleFileSelect(file, 'customerPhoto')} isError={validationErrors.customerPhoto} isPhoto />
+                  </div>
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
+                    {frontNid && <PreviewBox file={frontNid} title="ফ্রন্ট সাইড প্রিভিউ" />}
+                    {backNid && <PreviewBox file={backNid} title="ব্যাক সাইড প্রিভিউ" />}
+                    {customerPhoto && <PreviewBox file={customerPhoto} title="ছবি প্রিভিউ" />}
+                  </div>
+                   <div className="bg-teal-50 p-6 rounded-2xl mt-6 border-l-4 border-teal-500 text-center">
+                    <h3 className="text-xl font-bold text-[var(--color-primary)] flex items-center justify-center gap-3"><i className="fas fa-robot"></i> স্বয়ংক্রিয় তথ্য পূরণ</h3>
+                    <p className="text-teal-800 mt-2 mb-4 font-sans">NID আপলোডের পর এই বাটনে ক্লিক করুন।</p>
+                    <button onClick={handleAutoFill} disabled={isProcessing || !frontNid || !backNid} className="w-full sm:w-auto bg-[var(--color-primary)] text-white py-3 px-8 rounded-full font-bold font-sans flex items-center justify-center gap-3 transition-all duration-300 transform hover:-translate-y-1 shadow-lg hover:shadow-xl hover:bg-teal-800 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none disabled:shadow-md">
+                      {isProcessing ? <><i className="fas fa-spinner fa-spin"></i> প্রসেসিং...</> : <><i className="fas fa-magic-wand-sparkles"></i> অটোফিল করুন</>}
+                    </button>
+                  </div>
+                  <div className="mt-6">
+                    <label htmlFor="additionalInfo" className="block mb-2 font-bold text-gray-700 text-lg">অতিরিক্ত তথ্য (ঐচ্ছিক)</label>
+                    <textarea id="additionalInfo" rows={4} value={formData.additionalInfo} onChange={handleInputChange} placeholder="অন্যান্য মন্তব্য..." className="w-full p-4 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-[var(--color-secondary)] focus:border-transparent transition bg-gray-50 font-sans"></textarea>
+                  </div>
                 </FormSection>
               </div>
 
-              <FormSection title="ডকুমেন্ট ও ছবি আপলোড" iconClass="fa-cloud-upload">
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                  <UploadArea id="frontNid" title="NID (ফ্রন্ট)" onFileSelect={(file) => handleFileSelect(file, 'frontNid')} isError={validationErrors.frontNid} showCardOutline />
-                  <UploadArea id="backNid" title="NID (ব্যাক)" onFileSelect={(file) => handleFileSelect(file, 'backNid')} isError={validationErrors.backNid} showCardOutline />
-                  <UploadArea id="customerPhoto" title="গ্রাহকের ছবি" onFileSelect={(file) => handleFileSelect(file, 'customerPhoto')} isError={validationErrors.customerPhoto} isPhoto />
-                </div>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
-                  {frontNid && <PreviewBox file={frontNid} title="ফ্রন্ট সাইড প্রিভিউ" />}
-                  {backNid && <PreviewBox file={backNid} title="ব্যাক সাইড প্রিভিউ" />}
-                  {customerPhoto && <PreviewBox file={customerPhoto} title="ছবি প্রিভিউ" />}
-                </div>
-                 <div className="bg-teal-50 p-6 rounded-2xl mt-6 border-l-4 border-teal-500 text-center">
-                  <h3 className="text-xl font-bold text-[var(--color-primary)] flex items-center justify-center gap-3"><i className="fas fa-robot"></i> স্বয়ংক্রিয় তথ্য পূরণ</h3>
-                  <p className="text-teal-800 mt-2 mb-4 font-sans">NID আপলোডের পর এই বাটনে ক্লিক করুন।</p>
-                  <button onClick={handleAutoFill} disabled={isProcessing || !frontNid || !backNid} className="w-full sm:w-auto bg-[var(--color-primary)] text-white py-3 px-8 rounded-full font-bold font-sans flex items-center justify-center gap-3 transition-all duration-300 transform hover:-translate-y-1 shadow-lg hover:shadow-xl hover:bg-teal-800 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none disabled:shadow-md">
-                    {isProcessing ? <><i className="fas fa-spinner fa-spin"></i> প্রসেসিং...</> : <><i className="fas fa-magic-wand-sparkles"></i> অটোফিল করুন</>}
-                  </button>
-                </div>
-                <div className="mt-6">
-                  <label htmlFor="additionalInfo" className="block mb-2 font-bold text-gray-700 text-lg">অতিরিক্ত তথ্য (ঐচ্ছিক)</label>
-                  <textarea id="additionalInfo" rows={4} value={formData.additionalInfo} onChange={handleInputChange} placeholder="অন্যান্য মন্তব্য..." className="w-full p-4 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-[var(--color-secondary)] focus:border-transparent transition bg-gray-50 font-sans"></textarea>
-                </div>
-              </FormSection>
-            </div>
+              <div className="text-center mt-12">
+                <button onClick={handleSubmit} className="bg-[var(--color-secondary)] text-[var(--color-primary)] py-4 px-12 text-xl font-bold font-display tracking-wider rounded-full shadow-xl transition-all duration-300 transform hover:-translate-y-1.5 hover:shadow-2xl hover:brightness-105 focus:outline-none focus:ring-4 focus:ring-yellow-300">
+                  <i className="fas fa-paper-plane mr-3"></i> আবেদন জমা দিন
+                </button>
+              </div>
+            </>
+          )}
 
-            <div className="text-center mt-12">
-              <button onClick={handleSubmit} className="bg-[var(--color-secondary)] text-[var(--color-primary)] py-4 px-12 text-xl font-bold font-display tracking-wider rounded-full shadow-xl transition-all duration-300 transform hover:-translate-y-1.5 hover:shadow-2xl hover:brightness-105 focus:outline-none focus:ring-4 focus:ring-yellow-300">
-                <i className="fas fa-paper-plane mr-3"></i> আবেদন জমা দিন
-              </button>
-            </div>
-          </>
-        )}
-
-        <footer className="text-center mt-16 pt-8 border-t-2 border-gray-200 text-gray-500 font-sans">
-          <p className="font-semibold">© ২০২৪ - ডিজিটাল সিম নিবন্ধন সেবা</p>
-          <p className="mt-2 text-sm">বাংলাদেশ টেলিযোগাযোগ নিয়ন্ত্রণ কমিশন (বিটিআরসি) কর্তৃক অনুমোদিত</p>
-        </footer>
+          <footer className="text-center mt-16 pt-8 border-t-2 border-gray-200 text-gray-500 font-sans">
+            <p className="font-semibold">© ২০২৪ - ডিজিটাল সিম নিবন্ধন সেবা</p>
+            <p className="mt-2 text-sm">বাংলাদেশ টেলিযোগাযোগ নিয়ন্ত্রণ কমিশন (বিটিআরসি) কর্তৃক অনুমোদিত</p>
+          </footer>
+        </main>
       </div>
     </div>
   );

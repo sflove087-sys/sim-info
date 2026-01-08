@@ -9,8 +9,8 @@ interface InfoBlockProps {
 
 const InfoBlock: React.FC<InfoBlockProps> = ({ icon, title, children }) => (
   <div className="mb-8">
-    <h3 className="flex items-center text-lg font-bold font-display text-primary mb-3">
-      <i className={`fas ${icon} w-8 text-center text-xl mr-2 text-secondary`}></i>
+    <h3 className="flex items-center text-lg font-bold font-display text-emerald-900 mb-3">
+      <i className={`fas ${icon} w-8 text-center text-xl mr-2 text-amber-400`}></i>
       <span>{title}</span>
     </h3>
     <div className="text-gray-600 font-sans text-sm space-y-2 pl-10">
@@ -21,8 +21,8 @@ const InfoBlock: React.FC<InfoBlockProps> = ({ icon, title, children }) => (
 
 const Sidebar: React.FC = () => {
   return (
-    <aside className="sticky top-8 bg-white p-6 rounded-2xl shadow-lg border-t-4 border-secondary">
-      <h2 className="text-2xl font-bold font-display text-primary mb-6 border-b pb-4">
+    <aside className="sticky top-8 bg-white p-6 rounded-2xl shadow-lg border-t-4 border-amber-400">
+      <h2 className="text-2xl font-bold font-display text-emerald-900 mb-6 border-b pb-4">
         সহায়িকা ও নির্দেশনা
       </h2>
 
@@ -46,7 +46,7 @@ const Sidebar: React.FC = () => {
 
       <InfoBlock icon="fa-headset" title="সাহায্যের প্রয়োজন?">
          <p>যেকোনো সমস্যায় আমাদের হেল্পলাইনে যোগাযোগ করুন:</p>
-         <p className="font-bold text-primary">16000 (টোল-ফ্রি)</p>
+         <p className="font-bold text-emerald-900">16000 (টোল-ফ্রি)</p>
       </InfoBlock>
     </aside>
   );

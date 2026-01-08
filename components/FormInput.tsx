@@ -14,7 +14,7 @@ interface FormInputProps {
 
 const FormInput: React.FC<FormInputProps> = ({ id, label, value, onChange, type = 'text', placeholder, required = false, isError = false }) => {
   const errorClasses = 'border-red-500 ring-red-200';
-  const normalClasses = 'border-gray-200 focus:border-primary focus:ring-secondary';
+  const normalClasses = 'border-gray-200 focus:border-emerald-900 focus:ring-amber-400';
 
   return (
     <div className="font-sans">

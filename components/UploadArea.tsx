@@ -19,8 +19,8 @@ const UploadArea: React.FC<UploadAreaProps> = ({ id, title, onFileSelect, maxSiz
 
   const baseClasses = "border-2 border-dashed rounded-2xl p-4 text-center cursor-pointer transition-all duration-300 h-full flex flex-col justify-center items-center relative overflow-hidden";
   const themeClasses = isPhoto ? "border-green-300 bg-green-50/50" : "border-teal-200 bg-teal-50/50";
-  const hoverClasses = isPhoto ? "hover:border-green-500 hover:bg-green-100/50" : "hover:border-primary hover:bg-teal-100/50";
-  const draggingClasses = isPhoto ? "border-green-600 bg-green-200/50 ring-4 ring-green-100" : "border-primary bg-teal-200/50 ring-4 ring-teal-100";
+  const hoverClasses = isPhoto ? "hover:border-green-500 hover:bg-green-100/50" : "hover:border-[var(--color-primary)] hover:bg-teal-100/50";
+  const draggingClasses = isPhoto ? "border-green-600 bg-green-200/50 ring-4 ring-green-100" : "border-[var(--color-primary)] bg-teal-200/50 ring-4 ring-teal-100";
   const errorClasses = "border-red-500 bg-red-50";
 
   const handleFileChange = (selectedFile: File | null) => {
@@ -43,7 +43,7 @@ const UploadArea: React.FC<UploadAreaProps> = ({ id, title, onFileSelect, maxSiz
   }, []);
   
   const iconClass = isPhoto ? 'fas fa-camera-retro' : 'fas fa-id-card';
-  const iconColor = isPhoto ? 'text-green-600' : 'text-primary';
+  const iconColor = isPhoto ? 'text-green-600' : 'text-[var(--color-primary)]';
 
   return (
     <div

@@ -157,7 +157,7 @@ const App: React.FC = () => {
         </aside>
 
         <main className="lg:col-span-8">
-          <header className="text-center mb-10 p-6 bg-[var(--color-primary)] text-white rounded-2xl shadow-xl relative overflow-hidden">
+          <header className="text-center mb-10 p-6 bg-primary text-white rounded-2xl shadow-xl relative overflow-hidden">
             <div className="absolute -top-4 -left-8 text-white/10 text-8xl transform rotate-12">
               <i className="fas fa-sim-card"></i>
             </div>
@@ -179,9 +179,9 @@ const App: React.FC = () => {
           ) : (
             <>
               <StatusIndicator currentStep={currentStep} />
-              <div className="bg-yellow-50 p-5 rounded-2xl mb-8 border-l-4 border-[var(--color-secondary)] text-yellow-900 shadow-md">
+              <div className="bg-yellow-50 p-5 rounded-2xl mb-8 border-l-4 border-secondary text-yellow-900 shadow-md">
                 <p className="flex items-start gap-4">
-                  <i className="fas fa-info-circle text-[var(--color-secondary)] mt-1 text-xl"></i>
+                  <i className="fas fa-info-circle text-secondary mt-1 text-xl"></i>
                   <span className="font-sans">NID কার্ডের ছবি আপলোড করে "অটোফিল করুন" বাটনে চাপ দিন, অথবা ম্যানুয়ালি ফরমটি পূরণ করুন।</span>
                 </p>
               </div>
@@ -216,21 +216,21 @@ const App: React.FC = () => {
                     {customerPhoto && <PreviewBox file={customerPhoto} title="ছবি প্রিভিউ" />}
                   </div>
                    <div className="bg-teal-50 p-6 rounded-2xl mt-6 border-l-4 border-teal-500 text-center">
-                    <h3 className="text-xl font-bold text-[var(--color-primary)] flex items-center justify-center gap-3"><i className="fas fa-robot"></i> স্বয়ংক্রিয় তথ্য পূরণ</h3>
+                    <h3 className="text-xl font-bold text-primary flex items-center justify-center gap-3"><i className="fas fa-robot"></i> স্বয়ংক্রিয় তথ্য পূরণ</h3>
                     <p className="text-teal-800 mt-2 mb-4 font-sans">NID আপলোডের পর এই বাটনে ক্লিক করুন।</p>
-                    <button onClick={handleAutoFill} disabled={isProcessing || !frontNid || !backNid} className="w-full sm:w-auto bg-[var(--color-primary)] text-white py-3 px-8 rounded-full font-bold font-sans flex items-center justify-center gap-3 transition-all duration-300 transform hover:-translate-y-1 shadow-lg hover:shadow-xl hover:bg-teal-800 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none disabled:shadow-md">
+                    <button onClick={handleAutoFill} disabled={isProcessing || !frontNid || !backNid} className="w-full sm:w-auto bg-primary text-white py-3 px-8 rounded-full font-bold font-sans flex items-center justify-center gap-3 transition-all duration-300 transform hover:-translate-y-1 shadow-lg hover:shadow-xl hover:bg-teal-800 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none disabled:shadow-md">
                       {isProcessing ? <><i className="fas fa-spinner fa-spin"></i> প্রসেসিং...</> : <><i className="fas fa-magic-wand-sparkles"></i> অটোফিল করুন</>}
                     </button>
                   </div>
                   <div className="mt-6">
                     <label htmlFor="additionalInfo" className="block mb-2 font-bold text-gray-700 text-lg">অতিরিক্ত তথ্য (ঐচ্ছিক)</label>
-                    <textarea id="additionalInfo" rows={4} value={formData.additionalInfo} onChange={handleInputChange} placeholder="অন্যান্য মন্তব্য..." className="w-full p-4 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-[var(--color-secondary)] focus:border-transparent transition bg-gray-50 font-sans"></textarea>
+                    <textarea id="additionalInfo" rows={4} value={formData.additionalInfo} onChange={handleInputChange} placeholder="অন্যান্য মন্তব্য..." className="w-full p-4 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-secondary focus:border-transparent transition bg-gray-50 font-sans"></textarea>
                   </div>
                 </FormSection>
               </div>
 
               <div className="text-center mt-12">
-                <button onClick={handleSubmit} className="bg-[var(--color-secondary)] text-[var(--color-primary)] py-4 px-12 text-xl font-bold font-display tracking-wider rounded-full shadow-xl transition-all duration-300 transform hover:-translate-y-1.5 hover:shadow-2xl hover:brightness-105 focus:outline-none focus:ring-4 focus:ring-yellow-300">
+                <button onClick={handleSubmit} className="bg-secondary text-primary py-4 px-12 text-xl font-bold font-display tracking-wider rounded-full shadow-xl transition-all duration-300 transform hover:-translate-y-1.5 hover:shadow-2xl hover:brightness-105 focus:outline-none focus:ring-4 focus:ring-yellow-300">
                   <i className="fas fa-paper-plane mr-3"></i> আবেদন জমা দিন
                 </button>
               </div>

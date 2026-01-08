@@ -22,7 +22,7 @@ const PreviewBox: React.FC<PreviewBoxProps> = ({ file, title }) => {
 
   return (
     <div className="border-2 border-gray-200 rounded-2xl p-4 bg-white text-center shadow-sm">
-      <h4 className="font-bold font-display text-[var(--color-primary)] mb-3">{title}</h4>
+      <h4 className="font-bold font-display text-primary mb-3">{title}</h4>
       <div className={`w-full h-48 flex items-center justify-center rounded-lg overflow-hidden ${isPdf ? 'bg-gray-100' : ''}`}>
           <img 
             src={isPdf ? 'https://cdn-icons-png.flaticon.com/512/337/337946.png' : previewUrl} 

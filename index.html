@@ -6,6 +6,22 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>সিম নিবন্ধন ফরম</title>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: '#004d40',
+              secondary: '#ffc107',
+            },
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+              display: ['Kalpurush', 'sans-serif'],
+            },
+          },
+        },
+      }
+    </script>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,25 +30,16 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" integrity="sha512-BNaRQnYJYiPSqHHDb58B0yaPfCu+Wgds8Gp/gU33kqBtgNS4tSPHuGibyoVBL5gI9kLmbG0C+wFjrSdoK2gr7A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link rel="stylesheet" href="https://unpkg.com/react-image-crop/dist/ReactCrop.css" />
     <style>
-      :root {
-        --color-primary: #004d40; /* Deep Teal */
-        --color-secondary: #ffc107; /* Mango Yellow */
-        --color-background: #f5f7fa;
-        --color-text: #212121;
-        --font-sans: 'Inter', sans-serif;
-        --font-display: 'Kalpurush', sans-serif;
-      }
       *, *::before, *::after {
         box-sizing: border-box;
       }
       html {
-        background-color: var(--color-background);
+        background-color: #f5f7fa;
       }
       body {
         margin: 0;
-        font-family: var(--font-display);
-        color: var(--color-text);
-        background-color: var(--color-background);
+        color: #212121;
+        background-color: #f5f7fa;
         background-image:
           linear-gradient(rgba(0, 77, 64, 0.03) 1px, transparent 1px),
           linear-gradient(90deg, rgba(0, 77, 64, 0.03) 1px, transparent 1px);

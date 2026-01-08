@@ -1,6 +1,6 @@
+
 import React from 'react';
 
-// FIX: Defined props using a separate interface for clarity and to fix type errors.
 interface InfoBlockProps {
   icon: string;
   title: string;

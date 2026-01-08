@@ -1,0 +1,5 @@
+{
+  "name": "SIM Registration Form - NID Scan",
+  "description": "A web application for SIM card registration that allows users to upload scans of their National ID (NID) card (front and back) and automatically fill in the required customer information using AI.",
+  "requestFramePermissions": []
+}

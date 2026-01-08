@@ -9,9 +9,11 @@ interface FormSectionProps {
 
 const FormSection: React.FC<FormSectionProps> = ({ title, iconClass, children }) => {
   return (
-    <div className="bg-white p-6 sm:p-8 rounded-xl shadow-lg transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
-      <h2 className="text-2xl font-bold text-blue-900 mb-6 pb-4 border-b-2 border-blue-100 flex items-center gap-4">
-        <i className={`fas ${iconClass} text-blue-600 text-2xl`}></i>
+    <div className="bg-white p-6 sm:p-8 rounded-2xl shadow-lg border-t-4 border-secondary">
+      <h2 className="text-2xl font-bold font-display text-primary mb-6 flex items-center gap-4">
+        <div className="w-10 h-10 flex items-center justify-center bg-teal-50 rounded-full text-primary text-xl">
+          <i className={`fas ${iconClass}`}></i>
+        </div>
         <span>{title}</span>
       </h2>
       <div className="space-y-6">

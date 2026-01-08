@@ -10,12 +10,33 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Kalpurush:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Kalpurush:wght@400;500;700&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" integrity="sha512-BNaRQnYJYiPSqHHDb58B0yaPfCu+Wgds8Gp/gU33kqBtgNS4tSPHuGibyoVBL5gI9kLmbG0C+wFjrSdoK2gr7A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link rel="stylesheet" href="https://unpkg.com/react-image-crop/dist/ReactCrop.css" />
     <style>
+      :root {
+        --color-primary: #004d40; /* Deep Teal */
+        --color-secondary: #ffc107; /* Mango Yellow */
+        --color-background: #f5f7fa;
+        --color-text: #212121;
+        --font-sans: 'Inter', sans-serif;
+        --font-display: 'Kalpurush', sans-serif;
+      }
+      *, *::before, *::after {
+        box-sizing: border-box;
+      }
+      html {
+        background-color: var(--color-background);
+      }
       body {
-        font-family: 'Kalpurush', 'Segoe UI', 'Nirmala UI', sans-serif;
+        margin: 0;
+        font-family: var(--font-display);
+        color: var(--color-text);
+        background-color: var(--color-background);
+        background-image:
+          linear-gradient(rgba(0, 77, 64, 0.03) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(0, 77, 64, 0.03) 1px, transparent 1px);
+        background-size: 20px 20px;
       }
     </style>
   <script type="importmap">

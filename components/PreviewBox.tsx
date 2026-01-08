@@ -11,29 +11,25 @@ const PreviewBox: React.FC<PreviewBoxProps> = ({ file, title }) => {
 
   useEffect(() => {
     if (!file) return;
-
-    if (file.type.startsWith('image/')) {
-      const objectUrl = URL.createObjectURL(file);
-      setPreviewUrl(objectUrl);
-      
-      // Clean up the object URL on unmount
-      return () => URL.revokeObjectURL(objectUrl);
-    } else if (file.type === 'application/pdf') {
-      // Use a static URL for a PDF icon
-      setPreviewUrl('https://cdn-icons-png.flaticon.com/512/337/337946.png');
-    }
+    const objectUrl = URL.createObjectURL(file);
+    setPreviewUrl(objectUrl);
+    return () => URL.revokeObjectURL(objectUrl);
   }, [file]);
 
   if (!previewUrl) return null;
+  
+  const isPdf = file.type === 'application/pdf';
 
   return (
-    <div className="border-2 border-gray-200 rounded-lg p-4 bg-gray-50 text-center">
-      <h4 className="font-bold text-blue-800 mb-3">{title}</h4>
-      <img 
-        src={previewUrl} 
-        alt={`${title} preview`} 
-        className={`max-w-full h-auto max-h-60 mx-auto rounded-md border border-gray-300 shadow-md object-contain ${file.type === 'application/pdf' ? 'p-8' : ''}`} 
-      />
+    <div className="border-2 border-gray-200 rounded-2xl p-4 bg-white text-center shadow-sm">
+      <h4 className="font-bold font-display text-primary mb-3">{title}</h4>
+      <div className={`w-full h-48 flex items-center justify-center rounded-lg overflow-hidden ${isPdf ? 'bg-gray-100' : ''}`}>
+          <img 
+            src={isPdf ? 'https://cdn-icons-png.flaticon.com/512/337/337946.png' : previewUrl} 
+            alt={`${title} preview`} 
+            className={`max-w-full max-h-full object-contain ${isPdf ? 'w-20 h-20' : ''}`} 
+          />
+      </div>
     </div>
   );
 };

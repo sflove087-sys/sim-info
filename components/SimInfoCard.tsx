@@ -68,7 +68,7 @@ const SimInfoCard: React.FC<SimInfoCardProps> = ({ formData, customerPhoto, appl
 
   const InfoField = ({ label, value, isMono = false }: { label: string; value?: string; isMono?: boolean }) => (
     <div>
-      <p className="text-amber-400/80 text-[10px] font-bold uppercase tracking-widest font-sans">{label}</p>
+      <p className="text-amber-400 text-opacity-80 text-[10px] font-bold uppercase tracking-widest font-sans">{label}</p>
       <p className={`font-semibold text-white text-base leading-tight ${isMono ? 'font-mono' : 'font-display'}`}>{value || 'N/A'}</p>
     </div>
   );
@@ -85,7 +85,7 @@ const SimInfoCard: React.FC<SimInfoCardProps> = ({ formData, customerPhoto, appl
       <div ref={cardRef} className="bg-gradient-to-br from-slate-800 to-slate-900 rounded-3xl shadow-2xl w-full max-w-xl border-2 border-slate-700 overflow-hidden relative">
         <div className="absolute inset-0 opacity-80" style={{ backgroundImage: `url("data:image/svg+xml,${encodeURIComponent(bgSvg)}")` }}></div>
         <div className="relative p-6 sm:p-8">
-          <header className="flex justify-between items-center pb-4 border-b-2 border-amber-400/50">
+          <header className="flex justify-between items-center pb-4 border-b-2 border-amber-400 border-opacity-50">
             <div>
               <h3 className="text-lg font-bold text-white font-display">ডিজিটাল সিম নিবন্ধন কার্ড</h3>
               <p className="text-xs text-slate-400 font-sans tracking-wide">DIGITAL SIM REGISTRATION CARD</p>
@@ -95,15 +95,15 @@ const SimInfoCard: React.FC<SimInfoCardProps> = ({ formData, customerPhoto, appl
 
           <main className="grid grid-cols-1 md:grid-cols-4 gap-6 mt-6">
             <div className="md:col-span-1 flex flex-col items-center space-y-4">
-              {photoUrl && <img src={photoUrl} alt="Customer" className="w-full aspect-[3/4] object-cover rounded-xl border-2 border-slate-600 shadow-md bg-slate-700" />}
-              <div className="w-16 h-12 bg-gradient-to-br from-amber-400 to-amber-600 rounded-lg shadow-inner border border-amber-500/50 flex items-center justify-center">
-                <div className="w-14 h-10 bg-gradient-to-br from-amber-500 to-amber-700 rounded grid grid-cols-2 gap-px p-px"><span className="bg-amber-300/50"></span><span className="bg-amber-300/50"></span><span className="bg-amber-300/50"></span><span className="bg-amber-300/50"></span></div>
+              {photoUrl && <img src={photoUrl} alt="Customer" className="w-full object-cover rounded-xl border-2 border-slate-600 shadow-md bg-slate-700" />}
+              <div className="w-16 h-12 bg-gradient-to-br from-amber-400 to-amber-600 rounded-lg shadow-inner border border-amber-500 border-opacity-50 flex items-center justify-center">
+                <div className="w-14 h-10 bg-gradient-to-br from-amber-500 to-amber-700 rounded grid grid-cols-2 gap-px p-px"><span className="bg-amber-300 opacity-50"></span><span className="bg-amber-300 opacity-50"></span><span className="bg-amber-300 opacity-50"></span><span className="bg-amber-300 opacity-50"></span></div>
               </div>
             </div>
 
             <div className="md:col-span-3 space-y-3">
               <div>
-                <p className="text-amber-400/80 text-xs font-bold uppercase tracking-wider font-sans">নাম / Name</p>
+                <p className="text-amber-400 text-opacity-80 text-xs font-bold uppercase tracking-wider font-sans">নাম / Name</p>
                 <h2 className="text-3xl font-bold text-white font-display leading-tight">{formData.customerName}</h2>
               </div>
               <div className="grid grid-cols-2 gap-x-4 gap-y-3">
@@ -117,10 +117,10 @@ const SimInfoCard: React.FC<SimInfoCardProps> = ({ formData, customerPhoto, appl
             </div>
           </main>
 
-          <footer className="mt-6 pt-4 border-t-2 border-amber-400/50 flex flex-wrap items-center justify-between gap-4">
+          <footer className="mt-6 pt-4 border-t-2 border-amber-400 border-opacity-50 flex flex-wrap items-center justify-between gap-4">
             <div ref={hologramRef} className="w-20 h-20 flex items-center justify-center relative transition-transform duration-100" style={{ transformStyle: 'preserve-3d' }}>
                 <div className="absolute inset-0 opacity-50 rounded-full" style={{background: 'linear-gradient(45deg, #f09819, #edde5d, #ff512f, #dd2476)'}}></div>
-                <svg className="w-16 h-16 text-white/80 relative" viewBox="0 0 24 24" fill="currentColor" style={{ filter: 'drop-shadow(0 0 5px rgba(0,0,0,0.5))' }}><path d="M12 2C10.14 2 8.5 3.23 8.06 5.03L3.5 12.54L2.5 12.29C2.28 12.23 2.05 12.28 1.88 12.43C1.67 12.61 1.6 12.88 1.66 13.14L2.73 17.03C2.8 17.29 3.03 17.5 3.3 17.5C3.38 17.5 3.47 17.48 3.55 17.44L9.08 14.68L9.2 14.63L12 6.18V2M15.5 10.5C14.84 10.5 14.22 10.73 13.75 11.12L12 14.64L10.74 18.5L14.5 20.36L14.58 20.4C14.84 20.5 15.13 20.43 15.34 20.24C15.53 20.07 15.63 19.82 15.6 19.56L14.5 14.54L18.44 12.43C18.67 12.32 18.86 12.11 18.94 11.86C19.03 11.61 18.99 11.33 18.84 11.12C18.68 10.9 18.43 10.76 18.16 10.74L15.5 10.5Z"></path></svg>
+                <svg className="w-16 h-16 text-white opacity-80 relative" viewBox="0 0 24 24" fill="currentColor" style={{ filter: 'drop-shadow(0 0 5px rgba(0,0,0,0.5))' }}><path d="M12 2C10.14 2 8.5 3.23 8.06 5.03L3.5 12.54L2.5 12.29C2.28 12.23 2.05 12.28 1.88 12.43C1.67 12.61 1.6 12.88 1.66 13.14L2.73 17.03C2.8 17.29 3.03 17.5 3.3 17.5C3.38 17.5 3.47 17.48 3.55 17.44L9.08 14.68L9.2 14.63L12 6.18V2M15.5 10.5C14.84 10.5 14.22 10.73 13.75 11.12L12 14.64L10.74 18.5L14.5 20.36L14.58 20.4C14.84 20.5 15.13 20.43 15.34 20.24C15.53 20.07 15.63 19.82 15.6 19.56L14.5 14.54L18.44 12.43C18.67 12.32 18.86 12.11 18.94 11.86C19.03 11.61 18.99 11.33 18.84 11.12C18.68 10.9 18.43 10.76 18.16 10.74L15.5 10.5Z"></path></svg>
             </div>
             <div className="flex items-center gap-3">
               <img src={`https://api.qrserver.com/v1/create-qr-code/?size=80x80&data=${encodeURIComponent(qrData)}&bgcolor=FFFFFF&color=000000&qzone=1`} alt="QR Code" className="w-20 h-20 bg-white p-1 rounded-md border border-slate-600" />

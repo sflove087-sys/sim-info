@@ -158,10 +158,10 @@ const App: React.FC = () => {
 
         <main className="lg:col-span-8">
           <header className="text-center mb-10 p-6 bg-emerald-900 text-white rounded-2xl shadow-xl relative overflow-hidden">
-            <div className="absolute -top-4 -left-8 text-white/10 text-8xl transform rotate-12">
+            <div className="absolute -top-4 -left-8 text-white text-opacity-10 text-8xl transform rotate-12">
               <i className="fas fa-sim-card"></i>
             </div>
-            <div className="absolute -bottom-8 -right-4 text-white/10 text-9xl transform -rotate-12">
+            <div className="absolute -bottom-8 -right-4 text-white text-opacity-10 text-9xl transform -rotate-12">
                <i className="fas fa-id-card"></i>
             </div>
             <div className="relative z-10">
